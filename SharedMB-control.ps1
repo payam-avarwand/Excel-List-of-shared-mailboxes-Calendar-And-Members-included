@@ -42,6 +42,7 @@ $City2= $_.City2
             $Sheet.Cells.Item($i1,1) = $K0
             $Sheet.Cells.Item($i1,2) = $SH_Names
 
+
 ############################################################
 #Creation_Date
                 $DAT = Get-Mailbox -Identity $SH_Names -RecipientTypeDetails SharedMailbox | select whenCreated -ExpandProperty whenCreated

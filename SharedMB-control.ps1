@@ -9,7 +9,7 @@ Import-PSSession $Session
 #Create_the_Excel_Object 
 
 $excel_Obj = New-Object -ComObject Excel.Application
-$excel_Obj.visible = $false
+$excel_Obj.visible = $false 
 $workbook = $excel_Obj.Workbooks.Add()
 $Sheet= $workbook.Worksheets.Item(1)
 

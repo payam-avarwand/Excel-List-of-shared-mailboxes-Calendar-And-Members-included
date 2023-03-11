@@ -1,4 +1,6 @@
 ﻿# This Script creates an excel list of all enabled shared mailboxes in all our foreign offices with three parameters per record: Name + WhenCreated + Members
+# ©Payam Avarwand
+
 ############################################################
 #Create a session to Exchange Server
 
@@ -72,5 +74,5 @@ $usedRange.EntireColumn.AutoFit()
 $workbook.SaveAs("F:\ExcelList\ShMbxs_$D.xlsx")
 $excel_Obj.Quit()
 
-#Created_by_Payam.Avarwand
-#Payam_avar@yahoo.com
+# Created_by Payam.Avarwand
+# Payam_avar@yahoo.com

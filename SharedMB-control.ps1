@@ -7,7 +7,7 @@ $Session=New-PSSession -ConfigurationName microsoft.exchange -ConnectionUri http
 Import-PSSession $Session
 
 ############################################################
-#Create_the_Excel_Object
+#Create_the_Excel_Object 
 
 $excel_Obj = New-Object -ComObject Excel.Application
 $excel_Obj.visible = $false
@@ -16,7 +16,7 @@ $Sheet= $workbook.Worksheets.Item(1)
 
 $D = Get-Date -Format 'dd-MM-yyyy'
 $Sheet.Name = "SharedMailbxes"
-
+ 
 ############################################################
 #Titles
                             $Sheet.Cells.Item(1,2) = "Shared mailbox name"

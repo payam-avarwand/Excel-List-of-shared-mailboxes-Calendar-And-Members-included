@@ -35,8 +35,6 @@ $City2= $_.City2
 #Get_Shared_Mailboxes:
         $i1=$i1+1
 
-
-
         $List= Get-Mailbox -ResultSize Unlimited -RecipientTypeDetails SharedMailbox | Where-Object {($_.Name -like "*$City0*") -or ($_.Name -like "*$City1*") -or ($_.Name -like ".$City2*")} | select name | Sort-Object -Property name
             $K0=1
             foreach ($SH1 in $List){

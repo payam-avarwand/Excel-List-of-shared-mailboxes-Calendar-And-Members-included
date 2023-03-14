@@ -22,6 +22,10 @@ $Sheet.Name = "SharedMailbxes"
 #Titles
                             $Sheet.Cells.Item(1,2) = "Shared mailbox name"
                             $Sheet.Cells.Item(1,3) = "Creation date"
+                            $Sheet.Cells.Item(1,4) = "Last modified time"
+                            $Sheet.Cells.Item(1,5) = "Calendar items"
+                            $Sheet.Cells.Item(1,6) = "Calendar items size"
+                            $Sheet.Cells.Item(1,7) = "Calendar path"
 
 ############################################################
 #Get_the_Office_Names
@@ -50,6 +54,14 @@ $City2= $_.City2
                 $Sheet.Cells.Item($i1,3) = $DAT
 
 ############################################################
+#Calendar_Infos
+                $Calendars=Get-MailboxFolderStatistics -Identity $SH_Names | where {$_.FolderType -eq "Calendar"} | Select-Object Identity,ItemsInFolder,FolderAndSubfolderSize,LastModifiedTime
+                $Sheet.Cells.Item($i1,4) = $Calendars.LastModifiedTime
+                $Sheet.Cells.Item($i1,5) = $Calendars.ItemsInFolder
+                $Sheet.Cells.Item($i1,6) = $Calendars.FolderAndSubfolderSize
+                $Sheet.Cells.Item($i1,7) = $Calendars.Identity
+
+############################################################
 #Members
                 $Members=Get-MailboxPermission $SH_Names | Where-Object {($_.IsInherited -eq $False) -and -not ($_.User -like "*NT*AUT*") -and -not ($_.User -like "*Exchange*") -and -not ($_.User -like "*Backup*") -and -not ($_.User -like "*5-21-*") | Select user -ExpandProperty user | Sort-Object -Property name
                 
@@ -75,5 +87,6 @@ $usedRange.EntireColumn.AutoFit()
 $workbook.SaveAs("F:\ExcelList\ShMbxs_$D.xlsx")
 $excel_Obj.Quit()
 
-# Created_by Payam.Avarwand
+
+# Created_by
 # Payam_avar@yahoo.com
